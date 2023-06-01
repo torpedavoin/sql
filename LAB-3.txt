@@ -1,0 +1,20 @@
+1.SELECT * FROM bookshop WHERE price IS NULL OR price = 0;
+2.SELECT * FROM bookshop WHERE price IS NOT NULL AND pages IS NULL;
+3.SELECT * FROM bookshop WHERE dates IS NULL;
+4.SELECT * FROM bookshop WHERE DATEDIFF(CURDATE(), dates) <= 365;
+5.SELECT * FROM bookshop WHERE new = 'Yes' ORDER BY price ASC;
+6.SELECT * FROM bookshop WHERE pages BETWEEN 300 AND 400 ORDER BY name DESC;
+7.SELECT * FROM bookshop WHERE price BETWEEN 20 AND 40 ORDER BY dates DESC;
+8.SELECT * FROM bookshop ORDER BY name ASC, price DESC;
+9.SELECT * FROM bookshop WHERE price/pages < 0.1;
+10.SELECT CHAR_LENGTH(name) AS symbol_count, UPPER(LEFT(name, 20)) AS first_20_symbol FROM bookshop;
+11.SELECT CONCAT(UPPER(LEFT(name, 10)), '...', UPPER(RIGHT(name, 10))) AS result FROM bookshop;
+12.SELECT `name`,`dates`,DAY(dates), MONTH(dates),YEAR(dates) FROM bookshop;
+13.SELECT name, dates AS date, DATE_FORMAT(dates, '%d / %m / %Y') AS date_format FROM bookshop;
+14.SELECT code, price, price AS "Dollar price", price * 36.9 AS "Grivnya price", price * 0.94 AS "Euro price" FROM bookshop;
+15.SELECT code, price, FLOOR(price*36.9) AS "ціна в грн. без копійок", ROUND(price) AS "ціна без копійок округлена" FROM bookshop;
+16.INSERT INTO `bookshop`(`number`, `code`, `new`, `name`, `price`, `publishinghouse`, `pages`, `format`, `dates`, `printing`, `theme`, `category`) VALUES ('номер','код','новизна','назва','ціна','видавництво','сторінки','формат','дата рр-мм-кк','0','тема','категорія')
+17.INSERT INTO ??
+18.DELETE FROM bookshop WHERE DATE(dates) < '1990-01-01';
+19.UPDATE bookshop SET dates = NOW() WHERE dates IS NULL;
+20.UPDATE bookshop SET new('Yes') WHERE dates > '2005-01-01';

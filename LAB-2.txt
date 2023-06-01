@@ -1,0 +1,20 @@
+1.SELECT `number`, `code`, `new`, `name`, `price`, `pages` FROM `bookshop`;
+2.SELECT * FROM `bookshop`;
+3.SELECT `code`, `name`, `new`, `pages` ,`price` ,`number` FROM `bookshop`;
+4.SELECT * FROM `bookshop` LIMIT 10;
+5.SELECT * FROM table_name LIMIT (SELECT COUNT(*) * 0.1 FROM table_name); ??? SELECT TOP 10 PERCENT * FROM `bookshop`; ???
+6.SELECT DISTINCT `code` FROM `bookshop`;
+7.SELECT * FROM bookshop WHERE new = 'Yes';
+8.SELECT * FROM bookshop WHERE new = 'Yes' AND price >= 20 AND price <= 30;
+9.SELECT * FROM bookshop WHERE new = 'Yes' AND price >= 30 AND price <= 20;
+10.SELECT * FROM bookshop WHERE pages >=300 AND pages <=400 AND price > 20 AND price < 30;
+11.SELECT * FROM `bookshop`book WHERE YEAR(dates) = 2000 AND MONTH(dates) IN (12, 1, 2);
+12.SELECT * FROM `bookshop` WHERE code IN (5110, 5141, 4985, 4241);
+13.SELECT * FROM `bookshop` WHERE YEAR(dates) IN(1999,2001,2003,2005);
+14.SELECT * FROM `bookshop` WHERE `name` REGEXP '^[А-К]';
+15.SELECT * FROM `bookshop` WHERE `name` LIKE 'АПП%' AND YEAR(dates) = 2000 AND price < 20;
+16.SELECT * FROM bookshop WHERE name LIKE 'АПП%' AND name LIKE '%е' AND YEAR(dates) = 2000 AND MONTH(dates) <= 6;
+17.SELECT * FROM bookshop WHERE name LIKE '%Microsoft%' AND name NOT LIKE '%Windows%';
+18.SELECT * FROM `bookshop` WHERE `name` REGEXP '[0-9]';
+19.SELECT * FROM bookshop WHERE name REGEXP '[0-9].*[0-9].*[0-9]';
+20.????

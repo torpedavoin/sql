@@ -1,0 +1,8 @@
+1.DROP DATABASE IF EXISTS bookshop;
+CREATE DATABASE bookshop;
+CREATE INDEX CdIndex ON bookshop(code);
+INSERT INTO
+
+2.Додавання в таблицю нового текстового поля "Автор", розміром 15 символів   -   ALTER TABLE bookshop ADD author VARCHAR(15);
+Збільшення розміру текстового поля "Автор" до 20 символів   -   ALTER TABLE bookshop CHANGE author author VARCHAR(20); ALTER TABLE bookshop MODIFY COLUMN author VARCHAR(20);
+Видалення текстового поля "Автор" з таблиці    -    ALTER TABLE bookshop DROP COLUMN author;
