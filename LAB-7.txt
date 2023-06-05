@@ -1,0 +1,15 @@
+1. SELECT b.bookname AS назва_книги, bd.price, p.publishhouse AS назва_видавництва, bd.format FROM books b INNER JOIN bookdes bd ON b.DesID = bd.DesID INNER JOIN publishment p ON b.PublishID = p.PublishID;
+2. SELECT bd.theme, bd.category, b.bookname, p.publishhouse FROM books b JOIN bookdes bd ON b.DesID = bd.DesID JOIN publishment p ON b.PublishID = p.PublishID WHERE bd.theme = 'Ваша_тема' AND bd.category = 'Ваша_категорія';
+3. SELECT bd.theme, bd.category, b.bookname, p.publishhouse FROM books b JOIN bookdes bd ON b.DesID = bd.DesID JOIN publishment p ON b.PublishID = p.PublishID WHERE p.publishhouse = 'Видавнича група BHV' AND YEAR(bd.dates) > 2000 ORDER BY bd.theme, bd.category;
+4. SELECT bd.category, SUM(bd.pages) AS загальна_кількість_сторінок FROM bookdes bd GROUP BY bd.category ORDER BY загальна_кількість_сторінок DESC;
+5. SELECT AVG(bd.price) AS середня_вартість FROM bookdes bd JOIN books b ON bd.DesID = b.DesID WHERE bd.theme = 'Використання ПК в цілому' AND bd.category = 'Linux';
+6.
+7. SELECT b1.bookname AS книга1, b2.bookname AS книга2, bd1.pages FROM bookdes bd1 JOIN books b1 ON bd1.DesID = b1.DesID JOIN bookdes bd2 ON bd1.pages = bd2.pages AND bd1.DesID < bd2.DesID JOIN books b2 ON bd2.DesID = b2.DesID;
+8. SELECT b1.bookname AS книга1, b2.bookname AS книга2, b3.bookname AS книга3, bd1.price FROM bookdes bd1 JOIN books b1 ON bd1.DesID = b1.DesID JOIN bookdes bd2 ON bd1.price = bd2.price AND bd1.DesID < bd2.DesID JOIN books b2 ON bd2.DesID = b2.DesID JOIN bookdes bd3 ON bd2.price = bd3.price AND bd2.DesID < bd3.DesID JOIN books b3 ON bd3.DesID = b3.DesID;
+9. SELECT b.bookname FROM bookdes bd JOIN books b ON bd.DesID = b.DesID WHERE bd.category = 'C&C++';
+10. SELECT p.publishhouse FROM bookdes bd JOIN books b ON bd.DesID = b.DesID JOIN publishment p ON b.PublishID = p.PublishID WHERE bd.pages > 400 GROUP BY p.publishhouse;
+11. SELECT bd.category FROM bookdes bd GROUP BY bd.category HAVING COUNT(*) > 3;
+12. SELECT b.bookname FROM books b WHERE b.PublishID = ( SELECT p.PublishID FROM publishment p WHERE p.publishhouse = 'Видавнича група BHV' );
+13. SELECT b.bookname FROM books b WHERE NOT EXISTS ( SELECT 1 FROM publishment p WHERE p.PublishID = b.PublishID AND p.publishhouse = 'Видавнича група BHV' );
+14. SELECT theme AS bookname FROM bookdes UNION SELECT category AS bookname FROM bookdes ORDER BY bookname ASC;
+15. SELECT SUBSTRING_INDEX(bookname, ' ', 1) AS перше_слово FROM books UNION SELECT SUBSTRING_INDEX(category, ' ', 1) AS перше_слово FROM bookdes WHERE category NOT IN (SELECT category FROM bookdes GROUP BY category HAVING COUNT(*) > 1) ORDER BY перше_слово DESC;
